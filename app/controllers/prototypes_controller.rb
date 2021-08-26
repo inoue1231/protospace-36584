@@ -19,8 +19,8 @@ class PrototypesController < ApplicationController
 
   def update
     @prototype = Prototype.find(params[:id])
-    if @prototype.update(user_params)
-      redirect_to root_path
+    if @prototype.update(prototype_params)
+      redirect_to action: :show
     else
       render :edit
     end
@@ -55,7 +55,7 @@ class PrototypesController < ApplicationController
 
 
   def user_params
-  params.require(:prototype).permit(:title, :catch_copy, :concept,:image)
+     params.require(:prototype).permit(:title, :catch_copy, :concept,:image)
   end
 
   def move_to_index
